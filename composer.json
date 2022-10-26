@@ -7,5 +7,9 @@
             "email": "olmianser@yandex.ru"
         }
     ],
-    "require": {}
+    "license": "OSL-1.0",
+    "require": {},
+    "bin": [
+        "bin/brain-games"
+    ]
 }
