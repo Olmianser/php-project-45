@@ -1,0 +1,11 @@
+{
+    "name": "hexlet/code",
+    "description": "Brain Games",
+    "authors": [
+        {
+            "name": "Olga Zayarnaya",
+            "email": "olmianser@yandex.ru"
+        }
+    ],
+    "require": {}
+}
