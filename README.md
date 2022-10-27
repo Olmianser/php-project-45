@@ -3,3 +3,6 @@
 
 ### CodeClimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ce2e83c101318b78267/maintainability)](https://codeclimate.com/github/Olmianser/php-project-45/maintainability)
+
+### Asciinema
+https://asciinema.org/a/rqlSZkXlowXs1WCtOyynr9j6m
