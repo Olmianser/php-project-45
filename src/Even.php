@@ -34,8 +34,7 @@ function game()
         $rightAnswer = algotithm($question);
         $winner = isRightAnswer($rightAnswer, $answer);
     }
-    
+
     //finish of the game
     endGame($winner, $name);
 }
-?>

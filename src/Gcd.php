@@ -13,7 +13,7 @@ function algotithm($num)
     $a = $num[0];
     $b = $num[1];
     if ($a == 0) {
-    	return ($b == 0) ? 1 : $b;
+        return ($b == 0) ? 1 : $b;
     }
     while ($b > 0) {
         if ($a == $b) {
@@ -44,14 +44,13 @@ function game()
     for ($i = 1; ($i <= $rounds) && $winner; $i++) {
         $question[0] = rand(0, 100);
         $question[1] = rand(0, 100);
-        
+
         line('Question: %d %d', $question[0], $question[1]);
         $answer = prompt("Your answer");
         $rightAnswer = algotithm($question);
         $winner = isRightAnswer($rightAnswer, $answer);
     }
-    
+
     //finish of the game
     endGame($winner, $name);
 }
-?>
