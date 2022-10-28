@@ -6,13 +6,12 @@
 
 ### Asciinema
 #### brain-even
-https://asciinema.org/a/rqlSZkXlowXs1WCtOyynr9j6m
+https://asciinema.org/a/6srJX408Sec3vC6NXiFghPM91
 #### brain-calc
-https://asciinema.org/a/v3zLL2q1Ax0AKAzOAzwPxk2A0
+https://asciinema.org/a/PRRddAvYqwtGu25WRZwsP3QjH
 #### brain-gcd
-https://asciinema.org/a/CLDS8zc3fnEPLuQQ9r6FN52B3
+https://asciinema.org/a/sjlP5GssOBb9HNQgbGcUYMyEl
 #### brain-progression
-https://asciinema.org/a/WfQTvCSiKWAlgSDMD4OHZAV2H
+https://asciinema.org/a/DyowZMuHHye1RgiNuUtCpvMUi
 #### brain-prime
-https://asciinema.org/a/33nA6ga9TjIrxLBfE9n8XEmOk
-
+https://asciinema.org/a/nShprFQ1EZ0EWntmigjlYyvVv
