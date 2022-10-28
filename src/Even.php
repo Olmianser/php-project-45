@@ -8,7 +8,7 @@ use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
 use function Brain\Games\Engine\endGame;
 
-function algotithm($number)
+function algotithm(int $number)
 {
     return ($number % 2 === 0) ? 'yes' : 'no';
 }

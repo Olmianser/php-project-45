@@ -8,7 +8,7 @@ use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
 use function Brain\Games\Engine\endGame;
 
-function algotithm($num)
+function algotithm(array $num)
 {
     $a = $num[0];
     $b = $num[1];
@@ -38,7 +38,7 @@ function game()
 
     //game
     $winner = true;
-    $answer;
+    $question = [];
 
     //rounds
     for ($i = 1; ($i <= $rounds) && $winner; $i++) {

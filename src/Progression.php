@@ -8,7 +8,7 @@ use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
 use function Brain\Games\Engine\endGame;
 
-function algotithm($arr)
+function algotithm(array $arr)
 {
     return ($arr[0] + ($arr[1] * $arr[3]));
 }
@@ -24,7 +24,7 @@ function game()
 
     //game
     $winner = true;
-    $answer;
+    $question = [];
 
     //rounds
     for ($i = 1; ($i <= $rounds) && $winner; $i++) {

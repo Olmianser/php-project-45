@@ -8,7 +8,7 @@ use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
 use function Brain\Games\Engine\endGame;
 
-function algotithm($question)
+function algotithm(array $question)
 {
     switch ($question[1]) {
         case "0":
@@ -31,8 +31,8 @@ function game()
 
     //game
     $winner = true;
-    $answer;
     $typeOperation = ["+", "-", "*"];
+    $question = [];
 
     //rounds
     for ($i = 1; ($i <= $rounds) && $winner; $i++) {
