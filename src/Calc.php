@@ -1,14 +1,6 @@
-#!/usr/bin/env php
 <?php
 
-$autoloadPath1 = __DIR__ . '/../../../autoload.php';
-$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
-
-if (file_exists($autoloadPath1)) {
-    require_once $autoloadPath1;
-} else {
-    require_once $autoloadPath2;
-}
+namespace Brain\Games\Calc;
 
 use function cli\line;
 use function cli\prompt;
@@ -16,7 +8,7 @@ use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
 use function Brain\Games\Engine\endGame;
 
-function calc($question)
+function algotithm($question)
 {
     switch ($question[1]) {
     case "0" :
@@ -28,8 +20,8 @@ function calc($question)
     }
 }
 
-//game Even
-function gameEven()
+//game
+function game()
 {
     $rounds = 3; //number of rounds
 
@@ -50,13 +42,11 @@ function gameEven()
         
         line('Question: %d %s %d', $question[0], $typeOperation[$question[1]], $question[2]);
         $answer = prompt("Your answer");
-        $rightAnswer = calc($question);
+        $rightAnswer = algotithm($question);
         $winner = isRightAnswer($rightAnswer, $answer);
     }
     
     //finish of the game
     endGame($winner, $name);
 }
-
-gameEven();
 ?>
