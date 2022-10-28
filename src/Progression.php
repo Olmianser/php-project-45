@@ -19,7 +19,7 @@ function game()
     $rounds = 3; //number of rounds
 
     //Start of the game, greeting
-    $textGreeting = 'What number is missing in the pregression?';
+    $textGreeting = 'What number is missing in the progression?';
     $name = startGame($textGreeting);
 
     //game
