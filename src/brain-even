@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+use function cli\line;
+use function cli\prompt;
+use function Brain\Games\Engine\startGame;
+use function Brain\Games\Engine\isRightAnswer;
+use function Brain\Games\Engine\endGame;
+
+function isEven($number)
+{
+    return ($number % 2 === 0) ? 'yes' : 'no';
+}
+
+//game Even
+function gameEven()
+{
+    $rounds = 3; //number of rounds
+
+    $textGreeting = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $name = startGame($textGreeting);
+
+    //game
+    $winner = true;
+    $answer = "";
+
+    //rounds
+    for ($i = 1; ($i <= $rounds) && $winner; $i++) {
+        $question = rand(0, 100);
+        line('Question: %d', $question);
+        $answer = prompt("Your answer");
+
+        $rightAnswer = isEven($question);
+        $winner = isRightAnswer($rightAnswer, $answer);
+    }
+    
+    //finish of the game
+    endGame($winner, $name);
+}
+
+gameEven();
+?>
