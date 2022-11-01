@@ -6,7 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Brain\Games\Engine\startGame;
 use function Brain\Games\Engine\isRightAnswer;
-use function Brain\Games\Engine\endGame;
+use function Brain\Games\Engine\finishGame;
 
 function algotithm(array $num)
 {
@@ -28,7 +28,7 @@ function algotithm(array $num)
 }
 
 //game
-function game()
+function play()
 {
     $rounds = 3; //number of rounds
 
@@ -52,5 +52,5 @@ function game()
     }
 
     //finish of the game
-    endGame($winner, $name);
+    finishGame($winner, $name);
 }

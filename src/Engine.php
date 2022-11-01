@@ -27,7 +27,7 @@ function isRightAnswer(string $rightAnswer, string $answer)
     return $win;
 }
 
-function endGame(bool $winner, string $name)
+function finishGame(bool $winner, string $name)
 {
     $text = ($winner) ? 'Congratulations, %s!' : "Let's try again, %s!";
     line($text, $name);

@@ -6,12 +6,12 @@
 
 ### Asciinema
 #### brain-even
-https://asciinema.org/a/6srJX408Sec3vC6NXiFghPM91
+[![asciicast](https://asciinema.org/a/6srJX408Sec3vC6NXiFghPM91.svg)](https://asciinema.org/a/6srJX408Sec3vC6NXiFghPM91)
 #### brain-calc
-https://asciinema.org/a/PRRddAvYqwtGu25WRZwsP3QjH
+[![asciicast](https://asciinema.org/a/PRRddAvYqwtGu25WRZwsP3QjH.svg)](https://asciinema.org/a/PRRddAvYqwtGu25WRZwsP3QjH)
 #### brain-gcd
-https://asciinema.org/a/sjlP5GssOBb9HNQgbGcUYMyEl
+[![asciicast](https://asciinema.org/a/sjlP5GssOBb9HNQgbGcUYMyEl.svg)](https://asciinema.org/a/sjlP5GssOBb9HNQgbGcUYMyEl)
 #### brain-progression
-https://asciinema.org/a/DyowZMuHHye1RgiNuUtCpvMUi
+[![asciicast](https://asciinema.org/a/DyowZMuHHye1RgiNuUtCpvMUi.svg)](https://asciinema.org/a/DyowZMuHHye1RgiNuUtCpvMUi)
 #### brain-prime
-https://asciinema.org/a/nShprFQ1EZ0EWntmigjlYyvVv
+[![asciicast](https://asciinema.org/a/nShprFQ1EZ0EWntmigjlYyvVv.svg)](https://asciinema.org/a/nShprFQ1EZ0EWntmigjlYyvVv)
