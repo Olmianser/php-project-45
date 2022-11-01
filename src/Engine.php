@@ -16,6 +16,7 @@ function startGame(string $text)
     return $name;
 }
 
+//Checking "is answer correct?" in the cycle of game
 function isRightAnswer(string $rightAnswer, string $answer)
 {
     $win = ($rightAnswer == $answer);
@@ -27,6 +28,7 @@ function isRightAnswer(string $rightAnswer, string $answer)
     return $win;
 }
 
+//output of the game result
 function finishGame(bool $winner, string $name)
 {
     $text = ($winner) ? 'Congratulations, %s!' : "Let's try again, %s!";
