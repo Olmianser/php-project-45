@@ -13,6 +13,9 @@ const TEXT_GREETING = 'Answer "yes" if given number is prime. Otherwise answer "
 
 function playPrime(int $num)
 {
+    if (($num == 1) || ($num == 0)) {
+        return 'no';
+    }
     for ($i = 2; $i < $num; $i++) {
         if ($num % $i == 0) {
             return 'no';
@@ -30,7 +33,7 @@ function playGame()
     $rounds = setNumberRounds();
 
     for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
-        $number = rand(1, 100);
+        $number = rand(0, 100);
         $question = 'Question: ' . $number;
         $rightAnswer = playPrime($number);
 
