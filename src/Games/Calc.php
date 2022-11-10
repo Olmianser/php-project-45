@@ -11,15 +11,15 @@ use function Brain\Games\Engine\finishGame;
 
 const TEXT_GREETING = 'What is the result of the expression?';
 
-function playCalc(int $number1, string $operation, int $number2)
+function playCalc(int $num1, string $operat, int $num2)
 {
-    switch ($operation) {
+    switch ($operat) {
         case "+":
-            return ($number1 + $number2);
+            return ($num1 + $num2);
         case "-":
-            return ($number1 - $number2);
+            return ($num1 - $num2);
         case "*":
-            return ($number1 * $number2);
+            return ($num1 * $num2);
     }
 }
 
@@ -33,8 +33,8 @@ function playGame()
     for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
         $number1 = rand(0, 100);
         $number2 = rand(0, 100);
-        $temp = rand(0, 2);
-        switch ($temp) {
+        $operRand = rand(0, 2);
+        switch ($operRand) {
             case 0:
                 $opeation = "+";
                 break;
@@ -43,7 +43,6 @@ function playGame()
                 break;
             default:
                 $operation = "*";
-                break;
         }
         $question = "Question: " . $number1 . " " . $operation . " " . $number2;
         $rightAnswer = playCalc($number1, $operation, $number2);
