@@ -41,11 +41,11 @@ function playGame()
             case 1:
                 $operation = "-";
                 break;
-            case 2:
+            default:
                 $operation = "*";
                 break;
         }
-        $question = "Question: {$number1} {$operation} {$number2}";
+        $question = "Question: " . $number1 . " " . $operation . " " . $number2;
         $rightAnswer = playCalc($number1, $operation, $number2);
         $notLoser = playRound($question, $rightAnswer);
     }
