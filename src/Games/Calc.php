@@ -36,7 +36,7 @@ function playGame()
         $operRand = rand(0, 2);
         switch ($operRand) {
             case 0:
-                $opeation = "+";
+                $operation = "+";
                 break;
             case 1:
                 $operation = "-";
