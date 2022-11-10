@@ -30,7 +30,7 @@ function playGame()
     $rounds = setNumberRounds();
 
     for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
-        $number = rand(0, 100);
+        $number = rand(1, 100);
         $question = 'Question: ' . $number;
         $rightAnswer = playPrime($number);
 
