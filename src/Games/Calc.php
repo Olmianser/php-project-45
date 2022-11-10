@@ -4,48 +4,52 @@ namespace Brain\Games\Calc;
 
 use function cli\line;
 use function cli\prompt;
+use function Brain\Games\Engine\setNumberRounds;
 use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\isRightAnswer;
+use function Brain\Games\Engine\playRound;
 use function Brain\Games\Engine\finishGame;
 
-function algotithm(array $question)
+const TEXT_GREETING = 'What is the result of the expression?';
+
+function playCalc(int $number1, string $operation, int $number2)
 {
-    switch ($question[1]) {
-        case "0":
-            return ($question[0] + $question[2]);
-        case "1":
-            return ($question[0] - $question[2]);
-        case "2":
-            return ($question[0] * $question[2]);
+    switch ($operation) {
+        case "+":
+            return ($number1 + $number2);
+        case "-":
+            return ($number1 - $number2);
+        case "*":
+            return ($number1 * $number2);
     }
 }
 
-//game
-function play()
+function playGame()
 {
-    $rounds = 3; //number of rounds
+    $name = startGame(TEXT_GREETING);
 
-    //Start of the game, greeting
-    $textGreeting = 'What is the result of the expression?';
-    $name = startGame($textGreeting);
+    $notLoser = true;
+    $rounds = setNumberRounds();
 
-    //game
-    $winner = true;
-    $typeOperation = ["+", "-", "*"];
-    $question = [];
-
-    //rounds
-    for ($i = 1; ($i <= $rounds) && $winner; $i++) {
-        $question[0] = rand(0, 100);
-        $question[1] = rand(0, 2);
-        $question[2] = rand(0, 100);
-
-        line('Question: %d %s %d', $question[0], $typeOperation[$question[1]], $question[2]);
-        $answer = prompt("Your answer");
-        $rightAnswer = algotithm($question);
-        $winner = isRightAnswer($rightAnswer, $answer);
+    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+        $number1 = rand(0, 100);
+        $number2 = rand(0, 100);
+        $temp = rand(0, 2);
+        switch ($temp) {
+            case 0:
+                $opeation = "+";
+                break;
+            case 1:
+                $operation = "-";
+                break;
+            case 2:
+                $operation = "*";
+                break;
+        }
+        $question = "Question: {$number1} {$operation} {$number2}";
+        $rightAnswer = playCalc($number1, $operation, $number2);
+        $notLoser = playRound($question, $rightAnswer);
     }
 
     //finish of the game
-    finishGame($winner, $name);
+    finishGame($notLoser, $name);
 }

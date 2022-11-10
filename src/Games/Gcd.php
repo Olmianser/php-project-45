@@ -4,53 +4,46 @@ namespace Brain\Games\Gcd;
 
 use function cli\line;
 use function cli\prompt;
+use function Brain\Games\Engine\setNumberRounds;
 use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\isRightAnswer;
+use function Brain\Games\Engine\playRound;
 use function Brain\Games\Engine\finishGame;
 
-function algotithm(array $num)
+const TEXT_GREETING = 'Find the greatest common divisor of given numbers.';
+
+function playGcd(int $num1, int $num2)
 {
-    $a = $num[0];
-    $b = $num[1];
-    if ($a == 0) {
-        return ($b == 0) ? 1 : $b;
+    if ($num1 == 0) {
+        return ($num2 == 0) ? 1 : $num2;
     }
-    while ($b > 0) {
-        if ($a == $b) {
-            return $a;
-        } elseif ($a > $b) {
-            $a = $a - $b;
+    while ($num2 > 0) {
+        if ($num1 == $num2) {
+            return $num1;
+        } elseif ($num1 > $num2) {
+            $num1 = $num1 - $num2;
         } else {
-            $b = $b - $a;
+            $num2 = $num2 - $num1;
         }
     }
-    return $a;
+    return $num1;
 }
 
 //game
-function play()
+function playGame()
 {
-    $rounds = 3; //number of rounds
+    $name = startGame(TEXT_GREETING);
+    $rounds = setNumberRounds();
+    $notLoser = true;
 
-    //Start of the game, greeting
-    $textGreeting = 'Find the greatest common divisor of given numbers.';
-    $name = startGame($textGreeting);
+    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+        $number1 = rand(0, 100);
+        $number2 = rand(0, 100);
 
-    //game
-    $winner = true;
-    $question = [];
-
-    //rounds
-    for ($i = 1; ($i <= $rounds) && $winner; $i++) {
-        $question[0] = rand(0, 100);
-        $question[1] = rand(0, 100);
-
-        line('Question: %d %d', $question[0], $question[1]);
-        $answer = prompt("Your answer");
-        $rightAnswer = algotithm($question);
-        $winner = isRightAnswer($rightAnswer, $answer);
+        $question = "Question: {$number1} {$number2}";
+        $rightAnswer = playGcd($number1, $number2);
+        $notLoser = playRound($question, $rightAnswer);
     }
 
     //finish of the game
-    finishGame($winner, $name);
+    finishGame($notLoser, $name);
 }

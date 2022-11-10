@@ -4,11 +4,14 @@ namespace Brain\Games\Prime;
 
 use function cli\line;
 use function cli\prompt;
+use function Brain\Games\Engine\setNumberRounds;
 use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\isRightAnswer;
+use function Brain\Games\Engine\playRound;
 use function Brain\Games\Engine\finishGame;
 
-function algotithm(int $num)
+const TEXT_GREETING = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function playPrime(int $num)
 {
     for ($i = 2; $i < $num; $i++) {
         if ($num % $i == 0) {
@@ -19,26 +22,21 @@ function algotithm(int $num)
 }
 
 //game
-function play()
+function playGame()
 {
-    $rounds = 3; //number of rounds
+    $name = startGame(TEXT_GREETING);
 
-    //Start of the game, greeting
-    $textGreeting = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $name = startGame($textGreeting);
+    $notLoser = true;
+    $rounds = setNumberRounds();
 
-    //game
-    $winner = true;
+    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+        $number = rand(0, 100);
+        $question = 'Question: ' . $number;
+        $rightAnswer = playPrime($number);
 
-    //rounds
-    for ($i = 1; ($i <= $rounds) && $winner; $i++) {
-        $question = rand(0, 100);//number
-        line('Question: %d', $question);
-        $answer = prompt("Your answer");
-        $rightAnswer = algotithm($question);
-        $winner = isRightAnswer($rightAnswer, $answer);
+        $notLoser = playRound($question, $rightAnswer);
     }
 
     //finish of the game
-    finishGame($winner, $name);
+    finishGame($notLoser, $name);
 }

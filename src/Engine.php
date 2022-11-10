@@ -5,6 +5,8 @@ namespace Brain\Games\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const NUMBER_ROUNDS = 3;
+
 function startGame(string $text)
 {
     //Start of the game, greeting
@@ -16,16 +18,22 @@ function startGame(string $text)
     return $name;
 }
 
-//Checking "is answer correct?" in the cycle of game
-function isRightAnswer(string $rightAnswer, string $answer)
+function setNumberRounds()
 {
-    $win = ($rightAnswer == $answer);
-    if ($win) {
+    return NUMBER_ROUNDS;
+}
+
+function playRound(string $question, string $rightAnswer)
+{
+    line($question);
+    $answer = prompt("Your answer");
+    if ($rightAnswer == $answer) {
         line('Correct!');
+        return true;
     } else {
         line("'%s' is wrong answer ;(. Correct answer was '%s'", $answer, $rightAnswer);
+        return false;
     }
-    return $win;
 }
 
 //output of the game result

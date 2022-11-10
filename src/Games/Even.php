@@ -4,37 +4,32 @@ namespace Brain\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
+use function Brain\Games\Engine\setNumberRounds;
 use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\isRightAnswer;
+use function Brain\Games\Engine\playRound;
 use function Brain\Games\Engine\finishGame;
 
-function algotithm(int $number)
+const TEXT_GREETING = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function playEven(int $number)
 {
     return ($number % 2 === 0) ? 'yes' : 'no';
 }
 
-//game Even
-function play()
+function playGame()
 {
-    $rounds = 3; //number of rounds
+    $name = startGame(TEXT_GREETING);
+    $rounds = setNumberRounds();
+    $notLoser = true;
 
-    $textGreeting = 'Answer "yes" if the number is even, otherwise answer "no".';
-    $name = startGame($textGreeting);
+    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+        $number = rand(0, 100);
+        $question = "Question: {$number}";
+        $rightAnswer = playEven($number);
 
-    //game
-    $winner = true;
-    $answer = "";
-
-    //rounds
-    for ($i = 1; ($i <= $rounds) && $winner; $i++) {
-        $question = rand(0, 100);
-        line('Question: %d', $question);
-        $answer = prompt("Your answer");
-
-        $rightAnswer = algotithm($question);
-        $winner = isRightAnswer($rightAnswer, $answer);
+        $notLoser = playRound($question, $rightAnswer);
     }
 
     //finish of the game
-    finishGame($winner, $name);
+    finishGame($notLoser, $name);
 }
