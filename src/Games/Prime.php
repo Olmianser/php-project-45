@@ -4,14 +4,13 @@ namespace Brain\Games\Prime;
 
 use function cli\line;
 use function cli\prompt;
-use function Brain\Games\Engine\setNumberRounds;
-use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\playRound;
-use function Brain\Games\Engine\finishGame;
+use function Brain\Games\Engine\playingGame;
+
+use const Brain\Games\Engine\NUMBER_ROUNDS;
 
 const TEXT_GREETING = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-function playPrime(int $num)
+function isPrime(int $num)
 {
     if (($num == 1) || ($num == 0)) {
         return 'no';
@@ -27,19 +26,12 @@ function playPrime(int $num)
 //game
 function playGame()
 {
-    $name = startGame(TEXT_GREETING);
-
-    $notLoser = true;
-    $rounds = setNumberRounds();
-
-    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+    $questionsAndAnswers = [];
+    for ($round = 1; ($round <= NUMBER_ROUNDS); $round++) {
         $number = rand(0, 100);
-        $question = 'Question: ' . $number;
-        $rightAnswer = playPrime($number);
-
-        $notLoser = playRound($question, $rightAnswer);
+        $questionsAndAnswers[$round]['question'] = 'Question: ' . $number;
+        $questionsAndAnswers[$round]['answer'] = isPrime($number);
     }
 
-    //finish of the game
-    finishGame($notLoser, $name);
+    playingGame(TEXT_GREETING, $questionsAndAnswers);
 }

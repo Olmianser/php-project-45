@@ -4,14 +4,13 @@ namespace Brain\Games\Gcd;
 
 use function cli\line;
 use function cli\prompt;
-use function Brain\Games\Engine\setNumberRounds;
-use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\playRound;
-use function Brain\Games\Engine\finishGame;
+use function Brain\Games\Engine\playingGame;
+
+use const Brain\Games\Engine\NUMBER_ROUNDS;
 
 const TEXT_GREETING = 'Find the greatest common divisor of given numbers.';
 
-function playGcd(int $num1, int $num2)
+function findGcd(int $num1, int $num2)
 {
     if ($num1 == 0) {
         return ($num2 == 0) ? 1 : $num2;
@@ -31,19 +30,13 @@ function playGcd(int $num1, int $num2)
 //game
 function playGame()
 {
-    $name = startGame(TEXT_GREETING);
-    $rounds = setNumberRounds();
-    $notLoser = true;
-
-    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+    $questionsAndAnswers = [];
+    for ($round = 1; ($round <= NUMBER_ROUNDS); $round++) {
         $number1 = rand(0, 100);
         $number2 = rand(0, 100);
 
-        $question = "Question: {$number1} {$number2}";
-        $rightAnswer = playGcd($number1, $number2);
-        $notLoser = playRound($question, $rightAnswer);
+        $questionsAndAnswers[$round]['question'] = "Question: {$number1} {$number2}";
+        $questionsAndAnswers[$round]['answer'] = findGcd($number1, $number2);
     }
-
-    //finish of the game
-    finishGame($notLoser, $name);
+    playingGame(TEXT_GREETING, $questionsAndAnswers);
 }

@@ -4,32 +4,25 @@ namespace Brain\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
-use function Brain\Games\Engine\setNumberRounds;
-use function Brain\Games\Engine\startGame;
-use function Brain\Games\Engine\playRound;
-use function Brain\Games\Engine\finishGame;
+use function Brain\Games\Engine\playingGame;
+
+use const Brain\Games\Engine\NUMBER_ROUNDS;
 
 const TEXT_GREETING = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-function playEven(int $number)
+function isEven(int $number)
 {
     return ($number % 2 === 0) ? 'yes' : 'no';
 }
 
 function playGame()
 {
-    $name = startGame(TEXT_GREETING);
-    $rounds = setNumberRounds();
-    $notLoser = true;
-
-    for ($round = 1; ($round <= $rounds) && $notLoser; $round++) {
+    $questionsAndAnswers = [];
+    for ($round = 1; ($round <= NUMBER_ROUNDS); $round++) {
         $number = rand(0, 100);
-        $question = "Question: {$number}";
-        $rightAnswer = playEven($number);
-
-        $notLoser = playRound($question, $rightAnswer);
+        $questionsAndAnswers[$round]['question'] = "Question: {$number}";
+        $questionsAndAnswers[$round]['answer'] = isEven($number);
     }
 
-    //finish of the game
-    finishGame($notLoser, $name);
+    playingGame(TEXT_GREETING, $questionsAndAnswers);
 }

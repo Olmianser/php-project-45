@@ -7,22 +7,6 @@ use function cli\prompt;
 
 const NUMBER_ROUNDS = 3;
 
-function startGame(string $text)
-{
-    //Start of the game, greeting
-    line("Welcome to the Brain Games!");
-    $name = prompt("May I have your name?");
-    line("Hello, %s!", $name);
-    line($text);
-
-    return $name;
-}
-
-function setNumberRounds()
-{
-    return NUMBER_ROUNDS;
-}
-
 function playRound(string $question, string $rightAnswer)
 {
     line($question);
@@ -36,9 +20,20 @@ function playRound(string $question, string $rightAnswer)
     }
 }
 
-//output of the game result
-function finishGame(bool $winner, string $name)
+function playingGame(string $greeting, array $questionsAndAnswers)
 {
-    $text = ($winner) ? 'Congratulations, %s!' : "Let's try again, %s!";
+    //Start of the game, greeting
+    line("Welcome to the Brain Games!");
+    $name = prompt("May I have your name?");
+    line("Hello, %s!", $name);
+    line($greeting);
+
+    $notLoser = true;
+    for ($round = 1; ($round <= NUMBER_ROUNDS) && $notLoser; $round++) {
+        $notLoser = playRound($questionsAndAnswers[$round]['question'], $questionsAndAnswers[$round]['answer']);
+    }
+
+    //output of the game result
+    $text = ($notLoser) ? 'Congratulations, %s!' : "Let's try again, %s!";
     line($text, $name);
 }
