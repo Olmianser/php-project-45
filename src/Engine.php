@@ -20,13 +20,13 @@ function playRound(string $question, string $rightAnswer)
     }
 }
 
-function playingGame(string $greeting, array $questionsAndAnswers)
+function playingGame(string $rule, array $questionsAndAnswers)
 {
     //Start of the game, greeting
     line("Welcome to the Brain Games!");
     $name = prompt("May I have your name?");
     line("Hello, %s!", $name);
-    line($greeting);
+    line($rule);
 
     $notLoser = true;
     for ($round = 1; $round <= NUMBER_ROUNDS; $round++) {
