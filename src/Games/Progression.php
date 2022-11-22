@@ -8,7 +8,7 @@ use function Brain\Games\Engine\playingGame;
 
 use const Brain\Games\Engine\NUMBER_ROUNDS;
 
-const TEXT_GREETING = 'What number is missing in the progression?';
+const RULE_GAME = 'What number is missing in the progression?';
 
 function findHidInProgres(int $firstNum, int $step, int $length, int $hiddenPos)
 {
@@ -33,5 +33,5 @@ function playGame()
         $questionsAndAnswers[$round]['answer'] = findHidInProgres($numFirst, $step, $lengthProgression, $hiddenPos);
     }
 
-    playingGame(TEXT_GREETING, $questionsAndAnswers);
+    playingGame(RULE_GAME, $questionsAndAnswers);
 }

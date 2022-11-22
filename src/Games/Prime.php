@@ -8,7 +8,7 @@ use function Brain\Games\Engine\playingGame;
 
 use const Brain\Games\Engine\NUMBER_ROUNDS;
 
-const TEXT_GREETING = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const RULE_GAME = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function isPrime(int $num)
 {
@@ -33,5 +33,5 @@ function playGame()
         $questionsAndAnswers[$round]['answer'] = isPrime($number);
     }
 
-    playingGame(TEXT_GREETING, $questionsAndAnswers);
+    playingGame(RULE_GAME, $questionsAndAnswers);
 }

@@ -8,17 +8,17 @@ use function Brain\Games\Engine\playingGame;
 
 use const Brain\Games\Engine\NUMBER_ROUNDS;
 
-const TEXT_GREETING = 'What is the result of the expression?';
+const RULE_GAME = 'What is the result of the expression?';
 
-function calculating(int $num1, string $op, int $num2)
+function calculate(int $number1, string $operation, int $number2)
 {
-    switch ($op) {
+    switch ($operation) {
         case "+":
-            return ($num1 + $num2);
+            return ($number1 + $number2);
         case "-":
-            return ($num1 - $num2);
+            return ($number1 - $number2);
         case "*":
-            return ($num1 * $num2);
+            return ($number1 * $number2);
     }
 }
 
@@ -28,11 +28,11 @@ function playGame()
     for ($round = 1; $round <= NUMBER_ROUNDS; $round++) {
         $number1 = rand(0, 100);
         $number2 = rand(0, 100);
-        $arrOperations = ["+", "-", "*"];
-        $operation = $arrOperations[array_rand($arrOperations, 1)];
+        $arrayOperations = ["+", "-", "*"];
+        $operation = $arrayOperations[array_rand($arrayOperations, 1)];
 
         $questionsAndAnswers[$round]['question'] = "Question: " . $number1 . " " . $operation . " " . $number2;
-        $questionsAndAnswers[$round]['answer'] = calculating($number1, $operation, $number2);
+        $questionsAndAnswers[$round]['answer'] = calculate($number1, $operation, $number2);
     }
-    playingGame(TEXT_GREETING, $questionsAndAnswers);
+    playingGame(RULE_GAME, $questionsAndAnswers);
 }

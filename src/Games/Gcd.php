@@ -8,7 +8,7 @@ use function Brain\Games\Engine\playingGame;
 
 use const Brain\Games\Engine\NUMBER_ROUNDS;
 
-const TEXT_GREETING = 'Find the greatest common divisor of given numbers.';
+const RULE_GAME = 'Find the greatest common divisor of given numbers.';
 
 function findGcd(int $num1, int $num2)
 {
@@ -38,5 +38,5 @@ function playGame()
         $questionsAndAnswers[$round]['question'] = "Question: {$number1} {$number2}";
         $questionsAndAnswers[$round]['answer'] = findGcd($number1, $number2);
     }
-    playingGame(TEXT_GREETING, $questionsAndAnswers);
+    playingGame(RULE_GAME, $questionsAndAnswers);
 }

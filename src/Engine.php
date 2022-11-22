@@ -29,8 +29,11 @@ function playingGame(string $greeting, array $questionsAndAnswers)
     line($greeting);
 
     $notLoser = true;
-    for ($round = 1; ($round <= NUMBER_ROUNDS) && $notLoser; $round++) {
+    for ($round = 1; $round <= NUMBER_ROUNDS; $round++) {
         $notLoser = playRound($questionsAndAnswers[$round]['question'], $questionsAndAnswers[$round]['answer']);
+        if (!$notLoser) {
+            break;
+        }
     }
 
     //output of the game result
